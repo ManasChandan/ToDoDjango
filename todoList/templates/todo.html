@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+        <section>
+            <div>
+                <h1>This is the to do Page</h1>
+                <ul>
+                    {% for content in contents %}
+                        <li >
+                        {{ content.newcontents }}
+                        <form class="dlt" action="deleteTodo/{{content.id}}" style="display: inline;" method='post'>
+                            {% csrf_token %}
+                                <input type="submit" value="Delete">
+                        </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <form action="addTodo" method="post">
+                {% csrf_token %}
+                    <input type="text" name="work">
+                    <input type="submit" value="ADD">
+                </form>
+            </div>
+        </section>
+</body>
+</html>
