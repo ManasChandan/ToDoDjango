@@ -1,10 +1,8 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do Page</title>
+    {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 <body>
@@ -13,16 +11,16 @@
                 <h1>This is the to do Page</h1>
                 <ul>
                     {% for content in contents %}
-                        <li >
+                        <li>
                         {{ content.newcontents }}
-                        <form class="dlt" action="deleteTodo/{{content.id}}" style="display: inline;" method='post'>
+                        <form class="dlt" action="deleteTodo/{{content.id}}" method='post'>
                             {% csrf_token %}
                                 <input type="submit" value="Delete">
                         </form>
                         </li>
                     {% endfor %}
                 </ul>
-                <form action="addTodo" method="post">
+                 <form action="addTodo" method="post">
                 {% csrf_token %}
                     <input type="text" name="work">
                     <input type="submit" value="ADD">

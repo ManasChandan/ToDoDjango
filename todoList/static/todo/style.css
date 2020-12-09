@@ -1,5 +1,6 @@
+/* ctrl+F5 Cache Clear But Careful */
 body{
-    background: url("./Light_Background.jpg") ; 
+    /* background: url("./Light_Background.jpg") ;  */
     background-repeat: no-repeat;
     background-attachment: fixed;
     /* background-position: center ; */
@@ -9,7 +10,7 @@ section{
     /* background-image: url("./Background.jpg"); */
     margin-left: 525px;
     /* margin-right: 200px; */
-    margin-top: 150px;
+    margin-top: 15px;
     width: 20em;
 }
 .dlt{
