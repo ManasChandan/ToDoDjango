@@ -3,10 +3,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import ToDoItems
 # Create your views here.
 
-def todoView(request):
-    # return HttpResponse("Hello This is todoview")
-    contents = ToDoItems.objects.all()
-    return render(request , "todo.html" , {"contents" : contents})
+# def todoView(request):
+#     # return HttpResponse("Hello This is todoview")
+#     contents = ToDoItems.objects.all()
+#     return render(request , "todo.html" , {"contents" : contents})
 
 def index(request):
     contents = ToDoItems.objects.all()
@@ -21,3 +21,6 @@ def deleteTodo(requets , todo_id):
     item_delete = ToDoItems.objects.get(id=todo_id)
     item_delete.delete()
     return HttpResponseRedirect('/')
+
+def about(request):
+    return render(request , "about.html")
