@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>To Do List !</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand">TO DO LIST</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="">HOME</a>
+                    <a class="nav-link" href="about">ABOUT US</a>  
+                </div>
+                </div>
+            </div>
+            </nav>
+    <div class="container mt-3">
+        <div class="row">
+            {% for content in contents %}
+            <div class="card col-sm-3 mt-2 mx-auto">
+                {% load static %}
+                <img src="{% static 'todo/dmc.jpg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Work To Do</h5>
+                    <p class="card-text">{{ content.newcontents }}</p>
+                    <a href="deleteTodo/{{content.id}}" method="post" class="btn btn-outline-danger">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <form action="addTodo" method="post">
+        {% csrf_token %}
+        <div class="container mt-4">
+            <div class="input-group mb-3">
+                <button type="submit" class="btn btn-outline-success">ADD WORK</button>
+                <input type="text" class="form-control" placeholder="Enter Your Work"
+                    aria-label="Example text with button addon" aria-describedby="button-addon1" name="work">
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

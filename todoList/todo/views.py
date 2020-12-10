@@ -8,6 +8,10 @@ def todoView(request):
     contents = ToDoItems.objects.all()
     return render(request , "todo.html" , {"contents" : contents})
 
+def index(request):
+    contents = ToDoItems.objects.all()
+    return render(request , "index.html" , {"contents" : contents})
+
 def addTodo(request):
     new_item = ToDoItems( newcontents = request.POST['work'])
     new_item.save()
