@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-
+{% load static %}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,11 +28,10 @@
             </div>
         </div>
     </nav>
-    <div class="container mt-3">
-        <div class="row">
+    <div class="container mt-3" id="taskList">
+        <div class="row" id="rowLists">
             {% for content in contents %}
             <div class="card col-sm-3 mt-2 mx-auto">
-                {% load static %}
                 <img src="{% static 'todo/dmc.jpg' %}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Work To Do</h5>
@@ -43,16 +42,17 @@
             {% endfor %}
         </div>
     </div>
-    <form action="addTodo" method="post">
+    <form action="addTodo" method="post" id="addingForm">
         {% csrf_token %}
         <div class="container mt-4">
             <div class="input-group mb-3">
-                <button type="submit" class="btn btn-outline-success">ADD WORK</button>
-                <input type="text" class="form-control" placeholder="Enter Your Work"
+                <button type="submit" id="addButton" class="btn btn-outline-success">ADD WORK</button>
+                <input type="text" id="taskForm" class="form-control" placeholder="Enter Your Work"
                     aria-label="Example text with button addon" aria-describedby="button-addon1" name="work">
             </div>
         </div>
     </form>
 </body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'todo/js/todo.js' %}"></script>
 </html>
